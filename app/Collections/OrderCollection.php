@@ -2,6 +2,7 @@
 
 namespace App\Collections;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Collection as SupportCollection;
 
@@ -35,9 +36,14 @@ class OrderCollection extends Collection
     }
     public function topCustomers(int $limit = 5): SupportCollection
     {
+        if (! $this->first()?->relationLoaded('user')){
+            $this->loadMissing('user');
+        }
+        $users = $this->pluck('user')->keyBy('id');
+
         return $this->groupBy('user_id')
-            ->map(fn($orders) => [
-                'name' => $orders->first()->user->name,
+            ->map(fn($orders,$userId) => [
+                'name' => $users->get($userId)?->name ?? 'Unknown',
                 'total_spend' => $orders->sum('total'),
                 'order_count' => $orders->count()
             ])

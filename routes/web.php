@@ -3,10 +3,10 @@
 use App\Http\Controllers\DashboardController;
 use App\Models\Order;
 use Illuminate\Support\Benchmark;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard',[DashboardController::class,'dashboard'] );
-
 Route::get('benchmark',function (){
    echo "Testing with " . Order::count() ."orders\n";
    echo "Hardware: M1 Mac Pro, Local Mysql\n\n";
