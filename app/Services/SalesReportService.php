@@ -14,7 +14,7 @@ class SalesReportService
                 ->get();
 
         return [
-            'summary' => $orders->bussinesSummary(),
+            'summary' => $orders->businessSummary(),
             'average_order_per_customer' => $orders->averageOrderByCustomer(),
             'top_customers' => $orders->topCustomers(),
             'daily_breakdowns' =>$orders->dailyBreakdowns()

@@ -10,9 +10,9 @@ class DashboardController extends Controller
 {
     public function dashboard(SalesReportService $reportService)
     {
-        $orders = $reportService->dashboard();
+        $orders = $reportService->dashboardReport();
 
-        dd($orders);
+//        dd($orders);
 
         return $orders;
 //        return view('dashboard',[

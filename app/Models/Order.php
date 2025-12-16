@@ -43,7 +43,7 @@ class Order extends Model
     #[Scope]
     protected function completed(Builder $query): void
     {
-        $query->where('status','completed');
+        $query->where('status', 'completed');
     }
     #[Scope]
     protected function thisMonth(Builder $query): void

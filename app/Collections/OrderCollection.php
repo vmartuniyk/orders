@@ -15,7 +15,7 @@ class OrderCollection extends Collection
     {
         return $this->avg('total');
     }
-    public function bussinesSummary(): array
+    public function businessSummary(): array
     {
         return [
             'total_revenue' => $this->totalRevenue(),
